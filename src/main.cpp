@@ -565,6 +565,16 @@ void main()
         else
         {
             printf_debug("Success!\n");
+            // Load HEN vtx payload (5.05-12.02)
+            // Big thanks to Echostrech for this hen-vtx!
+            char* payload;
+            size_t payload_size;
+            if (load_payload_from_host("ps4-hen-1202-vtx.bin",&payload,payload_size)) {
+                execute_payload(payload, payload_size);
+                printf_debug("Payload executed successfully.\n");
+            } else {
+                printf_debug("Failed to load payload!\n");
+            }
             while (true) cycle_pad_colors();
         }
 }
